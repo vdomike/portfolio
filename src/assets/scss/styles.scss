@@ -1,4 +1,5 @@
 @import-normalize;
+@import '_variables';
 @import '_mixins';
 
 body {
@@ -15,8 +16,12 @@ a:focus {
 
 .container {
   max-width: 640px;
-  line-height: 2;
+  line-height: 1.5;
   margin: 0 auto;
+
+  p {
+    margin: 0.5em 0;
+  }
 }
 .section {
   margin-top: 60px;
@@ -25,9 +30,11 @@ a:focus {
 /* Navbar */
 nav {
   margin-bottom: 20px;
-  height: 50px;
+  height: 36px;
   display: flex;
+  align-items: center;
   .menu-toggle {
+    height: 100%;
     button {
       -webkit-appearance: none;
       background: none;
@@ -44,19 +51,33 @@ nav {
         @include dashed-focus;
       }
     }
-  };
+  }
   .menu {
-    overflow-x: hidden;
     padding: 0;
     margin: 0;
+    height: 100%;
     list-style: none;
     display: flex;
-    width: 300px;
+    width: 350px;
+    align-items: center;
     justify-content: flex-end;
     li {
       margin-left: 20px;
-      a {
+      height: 100%;
+      .menu-link {
         display: inline-block;
+        width: 36px;
+        height: 36px;
+        path {
+          fill: #d1d1d1;
+          transition: 0.2s fill ease-out;
+        }
+        &:hover {
+          path {
+            fill: $pink;
+            transition: 0.2s fill ease-out;
+          }
+        }
       }
     }
     &.menu-open-enter-active {
@@ -71,7 +92,7 @@ nav {
 @keyframes bounceInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-200px);
+    transform: translateX(-150px);
   }
   60% {
     opacity: 1;
@@ -85,25 +106,29 @@ nav {
   }
 }
 
-/* Skill listing */
+/* Skill filter */
+.filter {
+  margin-top: 30px;
+}
 .skills-wrapper {
   display: flex;
   flex-wrap: wrap;
   margin-top: 30px;
   .skill {
-    width: calc(640px / 3);
-    height: 150px;
-    color: #696969;
-    display: flex;
-    .skill-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      flex-basis: 0;
-    }
-    .skill-title {
-      font-size: 1.5em;
+    display: block;
+    margin-right: 20px;
+    cursor: pointer;
+    .filter-icon {
+      path {
+        fill: $grey;
+        transition: 0.2s fill ease-out;
+      }
+      &:hover {
+        path {
+          fill: $pink;
+          transition: 0.2s fill ease-out;
+        }
+      }
     }
   }
 }
@@ -123,7 +148,8 @@ nav {
   height: 0;
   padding-top: calc(50% - 15px);
   overflow: hidden;
-  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   background-color: transparent;
   perspective: 1000px;
   .project-inner {
@@ -148,6 +174,8 @@ nav {
     height: 100%;
     top: 0;
     filter: grayscale(100%);
+    background-size: cover;
+    background-position: center center;
   }
   .project-back {
     transform: rotateY(180deg);
@@ -223,4 +251,84 @@ nav {
   border-radius: 50%;
   width: 200px;
   height: 200px;
+}
+
+/* Project Page */
+.project-page {
+  width: 800px;
+  margin: 50px auto;
+  .awssld__bullets {
+    bottom: -60px;
+    button {
+      display: inline-block;
+      position: relative;
+      width: 24px;
+      height: 24px;
+      margin: 0px;
+      cursor: pointer;
+      border: none;
+      outline: 0px;
+      background-color: transparent;
+      &::after,
+      &::before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        top: 15%;
+        left: 15%;
+        width: 70%;
+        height: 70%;
+        border-radius: 50%;
+        transform: scale(0.5);
+        transition: transform 0.225s cubic-bezier(0.5, 0.75, 0.5, 1.65) 0s,
+          opacity 0.15s ease-out 0s;
+      }
+      &::before {
+        background-color: rgb(106, 106, 106);
+      }
+      &::after {
+        opacity: 0;
+        background-color: rgb(160, 160, 160);
+      }
+      &.active::before {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      &.active::after {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+  .awssld__content > img {
+    object-position: center top;
+    filter: grayscale(100%);
+    transition: 0.3s filter ease-out;
+    &:hover {
+      filter: none;
+      transition: 0.3s filter ease-out;
+    }
+  }
+  header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+  }
+}
+.project-description {
+  margin-top: 50px;
+  line-height: 1.5;
+}
+.project-title {
+  font-weight: 400;
+  font-size: 1.75em;
+  margin: 0;
+}
+.project-link {
+  a {
+    text-decoration: none;
+    color: $grey;
+    display: block;
+    margin-left: 5px;
+  }
 }

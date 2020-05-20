@@ -1,3 +1,5 @@
+@import '_variables';
+
 @mixin dashed-focus {
-  outline: 2px dotted #8556b7;
+  outline: 2px dotted $pink;
 }
