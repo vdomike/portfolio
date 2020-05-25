@@ -19,7 +19,7 @@ const Projectpage = () => {
         <h1 className="project-title">{title}</h1>
         <div className="project-link">
           {url && (
-            <a href="/">
+            <a href={url} target="_blank" rel="noreferrer noopener">
               <Icon path={mdiLink} title="link to project site" size={1} />
             </a>
           )}
