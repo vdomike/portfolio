@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import Avatar from '../components/Avatar';
 import Navbar from '../components/Navbar';
@@ -11,7 +11,7 @@ import signBg2 from '../assets/img/sign-bg2.png';
 class Homepage extends Component {
   render() {
     return (
-      <div className="homepage container">
+      <Fragment>
         <div
           className="container-sign sign-1"
           style={{ backgroundImage: `url(${signBg1})` }}
@@ -24,40 +24,44 @@ class Homepage extends Component {
         >
           <img src={sign2} alt="" />
         </div>
-        <div>
-          <header>
-            <div className="container-avatar">
-              <Avatar />
-            </div>
-            <Navbar />
-            <h1>Ирина Пахомова</h1>
-            <h2>Фронтенд разработчик</h2>
-          </header>
-          <main>
-            <section className="about-section">
-              <p>
-                Фронтенд разработчик с более, чем двухлетним опытом работы
-                (преимущественно на Vue.js).
-              </p>
-              <p>Уверенные знания стека: HTML, CSS, JavaScript.</p>
-              <p>
-                Опыт работы со вспомогательными инструментами: SASS, Webpack,
-                Git.
-              </p>
-              <p>Всегда уделяю особое внимание проработке UI/UX.</p>
-              <p>
-                Умею эффективно работать в удаленном режиме и сотрудничать с
-                распределенной командой.
-              </p>
-              <p>
-                Работа вдохновляет меня, я всегда прикладываю максимум усилий,
-                чтобы создать нечто одновременно и полезное, и прекрасное.
-              </p>
-            </section>
-            <Portfolio />
-          </main>
+        <div className="page homepage">
+          <div>
+            <header>
+              <div className="container-avatar">
+                <Avatar />
+              </div>
+              <Navbar />
+              <h1>Ирина Пахомова</h1>
+              <h2>Фронтенд разработчик</h2>
+            </header>
+            <main>
+              <section className="about-section">
+                <p>
+                  Имею за плечами более двух лет опыта работы в качестве
+                  фронтенд-разработчика. Последние полтора из них - постоянное
+                  удаленное сотрудничество с командой на проектах по разработке
+                  веб-приложений.
+                </p>
+                <p>
+                  Обладаю уверенными знания стека: HTML, CSS, JavaScript. Имею
+                  опыт работы с фронтенд-фреймворками Vue.js и React.js, а также
+                  со вспомогательными инструментами: SASS, Webpack, Git.
+                </p>
+                <p>Всегда уделяю особое внимание проработке UI/UX.</p>
+                <p>
+                  Умею эффективно работать в удаленном режиме и сотрудничать с
+                  распределенной командой.
+                </p>
+                <p>
+                  Работа вдохновляет меня, я всегда прикладываю максимум усилий,
+                  чтобы создать нечто одновременно и полезное, и прекрасное.
+                </p>
+              </section>
+              <Portfolio />
+            </main>
+          </div>
         </div>
-      </div>
+      </Fragment>
     );
   }
 }

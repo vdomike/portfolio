@@ -3,12 +3,12 @@ import Icon from '@mdi/react';
 
 import { SKILLS } from '../data/portfolioData';
 
-const SkillFilter = () => {
+const SkillFilter = ({ onFilter, onResetFilter }) => {
   return (
     <section className="filter">
       <div className="skills-wrapper">
         {SKILLS.map((skill, i) => (
-          <div className="skill" key={i}>
+          <div className="skill" key={i} onClick={() => onFilter(skill.title)}>
             <Icon
               path={skill.icon}
               title={skill.title}
@@ -17,6 +17,9 @@ const SkillFilter = () => {
             />
           </div>
         ))}
+        <div className="skill no-icon" onClick={onResetFilter}>
+          Все
+        </div>
       </div>
     </section>
   );
